@@ -73,7 +73,7 @@ const Solutions = () => {
         {/* Problem & Solution */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Problem */}
-          <Card className="bg-gradient-to-br from-red-500/10 to-orange-500/10 border-red-500/20 backdrop-blur-sm">
+          <Card className="bg-gradient-to-br from-red-900/30 to-red-800/20 border-red-400/30 backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="text-white text-2xl flex items-center">
                 <span className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold mr-3">!</span>
@@ -81,16 +81,16 @@ const Solutions = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <p className="text-gray-200 text-lg">
+              <p className="text-gray-100 text-lg">
                 Vos agents passent 70% de leur temps au téléphone avec des prospects non qualifiés :
               </p>
-              <ul className="space-y-3 text-gray-300">
+              <ul className="space-y-3 text-gray-200">
                 <li>• Calls sans budget défini</li>
                 <li>• Demandes d'information basiques</li>
                 <li>• Prospects pas prêts à acheter/vendre</li>
                 <li>• Perte de temps sur des leads froids</li>
               </ul>
-              <div className="bg-red-500/20 p-4 rounded-lg">
+              <div className="bg-red-500/30 p-4 rounded-lg border border-red-400/20">
                 <p className="text-white font-semibold">
                   Résultat : Moins de temps pour vendre = Moins de commissions
                 </p>
@@ -99,7 +99,7 @@ const Solutions = () => {
           </Card>
 
           {/* Solution */}
-          <Card className="bg-gradient-to-br from-green-500/10 to-blue-500/10 border-green-500/20 backdrop-blur-sm">
+          <Card className="bg-gradient-to-br from-green-900/30 to-green-800/20 border-green-400/30 backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="text-white text-2xl flex items-center">
                 <span className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold mr-3">✓</span>
@@ -107,16 +107,16 @@ const Solutions = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <p className="text-gray-200 text-lg">
+              <p className="text-gray-100 text-lg">
                 Notre IA vocale qualifie automatiquement tous vos leads entrants :
               </p>
-              <ul className="space-y-3 text-gray-300">
+              <ul className="space-y-3 text-gray-200">
                 <li>• Qualification budget en temps réel</li>
                 <li>• Collecte des besoins précis</li>
                 <li>• Prise de RDV automatique</li>
                 <li>• Seuls les leads chauds vous sont transmis</li>
               </ul>
-              <div className="bg-green-500/20 p-4 rounded-lg">
+              <div className="bg-green-500/30 p-4 rounded-lg border border-green-400/20">
                 <p className="text-white font-semibold">
                   Résultat : 100% de votre temps sur des prospects qualifiés
                 </p>
@@ -131,14 +131,14 @@ const Solutions = () => {
             Ce Que Nous Vous Offrons
           </h3>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="flex items-center space-x-4 bg-white/5 p-6 rounded-lg">
+            <div className="flex items-center space-x-4 bg-gray-800/50 p-6 rounded-lg border border-gray-700/50">
               <Phone className="text-blue-400" size={32} />
               <div className="text-left">
                 <h4 className="text-white font-semibold text-lg">IA Vocale 24/7</h4>
                 <p className="text-gray-300">Qualification automatique par téléphone</p>
               </div>
             </div>
-            <div className="flex items-center space-x-4 bg-white/5 p-6 rounded-lg">
+            <div className="flex items-center space-x-4 bg-gray-800/50 p-6 rounded-lg border border-gray-700/50">
               <MessageSquare className="text-green-400" size={32} />
               <div className="text-left">
                 <h4 className="text-white font-semibold text-lg">Chatbot SMS</h4>
@@ -149,7 +149,7 @@ const Solutions = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+        <div className="text-center bg-gray-800/60 backdrop-blur-sm rounded-2xl p-8 border border-gray-600/30">
           <h3 className="text-3xl font-bold text-white mb-4">
             Testez Notre Agent Vocal Maintenant
           </h3>
@@ -163,13 +163,13 @@ const Solutions = () => {
               placeholder="Votre URL webhook Zapier"
               value={webhookUrl}
               onChange={(e) => setWebhookUrl(e.target.value)}
-              className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+              className="bg-gray-700/50 border-gray-600/50 text-white placeholder:text-gray-400 focus:border-white/50"
               required
             />
             <Button 
               type="submit" 
               size="lg" 
-              className="w-full bg-white text-black hover:bg-gray-200 transition-all duration-300"
+              className="w-full bg-white text-black hover:bg-gray-200 transition-all duration-300 font-semibold"
               disabled={isLoading}
             >
               {isLoading ? "Activation en cours..." : "Tester l'Agent Vocal"}
