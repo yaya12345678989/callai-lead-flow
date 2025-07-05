@@ -1,37 +1,61 @@
 
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Phone, MessageSquare } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const Solutions = () => {
-  const workflows = [
-    {
-      title: "Workflow Leads Acheteurs",
-      description: "Qualification automatique des prospects acheteurs avec collecte d'informations complètes",
-      steps: [
-        "Accueil et identification du besoin d'achat",
-        "Qualification budget et financement",
-        "Localisation et type de bien souhaités",
-        "Temporalité du projet d'achat",
-        "Prise de rendez-vous automatique",
-        "Notification agent avec dossier complet"
-      ],
-      color: "from-blue-500/20 to-purple-500/20"
-    },
-    {
-      title: "Workflow Leads Vendeurs",
-      description: "Gestion optimale des demandes d'estimation avec qualification vendeur",
-      steps: [
-        "Identification motif estimation (vente/succession)",
-        "Collecte informations propriétaire",
-        "Adresse complète du bien à estimer",
-        "Qualification temporalité de vente",
-        "Planification visite expert",
-        "Transfert lead qualifié vers agent"
-      ],
-      color: "from-green-500/20 to-teal-500/20"
+  const [webhookUrl, setWebhookUrl] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleTestAgent = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!webhookUrl) {
+      toast({
+        title: "Erreur",
+        description: "Veuillez entrer votre webhook URL pour tester notre agent vocal",
+        variant: "destructive",
+      });
+      return;
     }
-  ];
+
+    setIsLoading(true);
+    console.log("Déclenchement du webhook pour test agent vocal:", webhookUrl);
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "no-cors",
+        body: JSON.stringify({
+          timestamp: new Date().toISOString(),
+          test_type: "agent_vocal_callai",
+          message: "Test de l'agent vocal CallAI - Prise de rendez-vous automatique",
+          triggered_from: window.location.origin,
+        }),
+      });
+
+      toast({
+        title: "Agent Vocal Activé",
+        description: "Notre agent vocal va vous contacter dans les prochaines minutes pour planifier un rendez-vous. Vérifiez votre historique Zapier pour confirmer le déclenchement.",
+      });
+    } catch (error) {
+      console.error("Erreur lors du déclenchement du webhook:", error);
+      toast({
+        title: "Erreur",
+        description: "Impossible de déclencher l'agent vocal. Vérifiez votre URL webhook et réessayez.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <section id="solutions" className="py-20 bg-gradient-to-b from-gray-900 to-black">
@@ -39,54 +63,123 @@ const Solutions = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Nos Workflows Intelligents
+            Le Problème que Nous Résolvons
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Des processus de qualification sur mesure pour maximiser 
-            l'efficacité de vos équipes commerciales.
+            Vos agents perdent du temps à qualifier des leads non pertinents au lieu de vendre.
           </p>
         </div>
 
-        {/* Workflows */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-16">
-          {workflows.map((workflow, index) => (
-            <Card key={index} className={`bg-gradient-to-br ${workflow.color} border-white/10 backdrop-blur-sm`}>
-              <CardHeader>
-                <CardTitle className="text-white text-2xl">{workflow.title}</CardTitle>
-                <CardDescription className="text-gray-200 text-lg">
-                  {workflow.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {workflow.steps.map((step, idx) => (
-                    <div key={idx} className="flex items-start space-x-3">
-                      <div className="flex-shrink-0 w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mt-0.5">
-                        <span className="text-white text-sm font-bold">{idx + 1}</span>
-                      </div>
-                      <p className="text-gray-200">{step}</p>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+        {/* Problem & Solution */}
+        <div className="grid lg:grid-cols-2 gap-12 mb-16">
+          {/* Problem */}
+          <Card className="bg-gradient-to-br from-red-500/10 to-orange-500/10 border-red-500/20 backdrop-blur-sm">
+            <CardHeader>
+              <CardTitle className="text-white text-2xl flex items-center">
+                <span className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold mr-3">!</span>
+                Le Problème
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-gray-200 text-lg">
+                Vos agents passent 70% de leur temps au téléphone avec des prospects non qualifiés :
+              </p>
+              <ul className="space-y-3 text-gray-300">
+                <li>• Calls sans budget défini</li>
+                <li>• Demandes d'information basiques</li>
+                <li>• Prospects pas prêts à acheter/vendre</li>
+                <li>• Perte de temps sur des leads froids</li>
+              </ul>
+              <div className="bg-red-500/20 p-4 rounded-lg">
+                <p className="text-white font-semibold">
+                  Résultat : Moins de temps pour vendre = Moins de commissions
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Solution */}
+          <Card className="bg-gradient-to-br from-green-500/10 to-blue-500/10 border-green-500/20 backdrop-blur-sm">
+            <CardHeader>
+              <CardTitle className="text-white text-2xl flex items-center">
+                <span className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold mr-3">✓</span>
+                Notre Solution
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-gray-200 text-lg">
+                Notre IA vocale qualifie automatiquement tous vos leads entrants :
+              </p>
+              <ul className="space-y-3 text-gray-300">
+                <li>• Qualification budget en temps réel</li>
+                <li>• Collecte des besoins précis</li>
+                <li>• Prise de RDV automatique</li>
+                <li>• Seuls les leads chauds vous sont transmis</li>
+              </ul>
+              <div className="bg-green-500/20 p-4 rounded-lg">
+                <p className="text-white font-semibold">
+                  Résultat : 100% de votre temps sur des prospects qualifiés
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
-        {/* Value Proposition */}
-        <div className="text-center bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-          <h3 className="text-3xl font-bold text-white mb-6">
-            Notre Proposition de Valeur Unique
+        {/* What We Offer */}
+        <div className="text-center mb-12">
+          <h3 className="text-3xl font-bold text-white mb-8">
+            Ce Que Nous Vous Offrons
           </h3>
-          <blockquote className="text-2xl text-gray-200 italic mb-8 max-w-4xl mx-auto">
-            "Nous transformons chaque lead entrant en une opportunité qualifiée et prête à convertir, 
-            en automatisant intelligemment la première ligne de contact et en libérant vos agents 
-            pour ce qu'ils font de mieux : vendre."
-          </blockquote>
-          <Button size="lg" className="bg-white text-black hover:bg-gray-200 transition-all duration-300">
-            Découvrir notre approche
-            <ArrowRight className="ml-2" size={20} />
-          </Button>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="flex items-center space-x-4 bg-white/5 p-6 rounded-lg">
+              <Phone className="text-blue-400" size={32} />
+              <div className="text-left">
+                <h4 className="text-white font-semibold text-lg">IA Vocale 24/7</h4>
+                <p className="text-gray-300">Qualification automatique par téléphone</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-4 bg-white/5 p-6 rounded-lg">
+              <MessageSquare className="text-green-400" size={32} />
+              <div className="text-left">
+                <h4 className="text-white font-semibold text-lg">Chatbot SMS</h4>
+                <p className="text-gray-300">Suivi intelligent des prospects</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="text-center bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+          <h3 className="text-3xl font-bold text-white mb-4">
+            Testez Notre Agent Vocal Maintenant
+          </h3>
+          <p className="text-xl text-gray-200 mb-8">
+            Notre IA va vous appeler et vous booker un rendez-vous pour discuter de votre business
+          </p>
+          
+          <form onSubmit={handleTestAgent} className="max-w-md mx-auto space-y-4">
+            <Input
+              type="url"
+              placeholder="Votre URL webhook Zapier"
+              value={webhookUrl}
+              onChange={(e) => setWebhookUrl(e.target.value)}
+              className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+              required
+            />
+            <Button 
+              type="submit" 
+              size="lg" 
+              className="w-full bg-white text-black hover:bg-gray-200 transition-all duration-300"
+              disabled={isLoading}
+            >
+              {isLoading ? "Activation en cours..." : "Tester l'Agent Vocal"}
+              <Phone className="ml-2" size={20} />
+            </Button>
+          </form>
+          
+          <p className="text-sm text-gray-400 mt-4">
+            Créez un webhook Zapier et collez l'URL ci-dessus. Notre agent vous contactera automatiquement.
+          </p>
         </div>
       </div>
     </section>
