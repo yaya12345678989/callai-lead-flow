@@ -73,7 +73,7 @@ const Solutions = () => {
         {/* Problem & Solution */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Problem */}
-          <Card className="bg-gradient-to-br from-red-600 to-black border-red-500/50 backdrop-blur-sm">
+          <Card className="bg-red-600 border-red-500/50 backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="text-white text-2xl flex items-center">
                 <span className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold mr-3">!</span>
@@ -99,7 +99,7 @@ const Solutions = () => {
           </Card>
 
           {/* Solution */}
-          <Card className="bg-gradient-to-br from-green-600 to-black border-green-500/50 backdrop-blur-sm">
+          <Card className="bg-green-600 border-green-500/50 backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="text-white text-2xl flex items-center">
                 <span className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold mr-3">✓</span>
