@@ -43,7 +43,7 @@ const Solutions = () => {
 
       toast({
         title: "Agent Vocal Activé",
-        description: "Notre agent vocal va vous contacter dans les prochaines minutes pour planifier un rendez-vous. Vérifiez votre historique Zapier pour confirmer le déclenchement.",
+        description: "Notre IA va vous appeler et vous booker un rendez-vous pour discuter de votre business",
       });
     } catch (error) {
       console.error("Erreur lors du déclenchement du webhook:", error);
@@ -73,7 +73,7 @@ const Solutions = () => {
         {/* Problem & Solution */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Problem */}
-          <Card className="bg-gradient-to-br from-red-900/30 to-red-800/20 border-red-400/30 backdrop-blur-sm">
+          <Card className="bg-gradient-to-br from-red-600 to-black border-red-500/50 backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="text-white text-2xl flex items-center">
                 <span className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold mr-3">!</span>
@@ -81,16 +81,16 @@ const Solutions = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <p className="text-gray-100 text-lg">
+              <p className="text-white text-lg">
                 Vos agents passent 70% de leur temps au téléphone avec des prospects non qualifiés :
               </p>
-              <ul className="space-y-3 text-gray-200">
+              <ul className="space-y-3 text-gray-100">
                 <li>• Calls sans budget défini</li>
                 <li>• Demandes d'information basiques</li>
                 <li>• Prospects pas prêts à acheter/vendre</li>
                 <li>• Perte de temps sur des leads froids</li>
               </ul>
-              <div className="bg-red-500/30 p-4 rounded-lg border border-red-400/20">
+              <div className="bg-red-500/40 p-4 rounded-lg border border-red-400/30">
                 <p className="text-white font-semibold">
                   Résultat : Moins de temps pour vendre = Moins de commissions
                 </p>
@@ -99,7 +99,7 @@ const Solutions = () => {
           </Card>
 
           {/* Solution */}
-          <Card className="bg-gradient-to-br from-green-900/30 to-green-800/20 border-green-400/30 backdrop-blur-sm">
+          <Card className="bg-gradient-to-br from-green-600 to-black border-green-500/50 backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="text-white text-2xl flex items-center">
                 <span className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold mr-3">✓</span>
@@ -107,16 +107,16 @@ const Solutions = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <p className="text-gray-100 text-lg">
+              <p className="text-white text-lg">
                 Notre IA vocale qualifie automatiquement tous vos leads entrants :
               </p>
-              <ul className="space-y-3 text-gray-200">
+              <ul className="space-y-3 text-gray-100">
                 <li>• Qualification budget en temps réel</li>
                 <li>• Collecte des besoins précis</li>
                 <li>• Prise de RDV automatique</li>
                 <li>• Seuls les leads chauds vous sont transmis</li>
               </ul>
-              <div className="bg-green-500/30 p-4 rounded-lg border border-green-400/20">
+              <div className="bg-green-500/40 p-4 rounded-lg border border-green-400/30">
                 <p className="text-white font-semibold">
                   Résultat : 100% de votre temps sur des prospects qualifiés
                 </p>
