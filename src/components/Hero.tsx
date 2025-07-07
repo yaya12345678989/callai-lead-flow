@@ -1,8 +1,73 @@
 
 import { ArrowRight, Phone, MessageSquare, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const Hero = () => {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleBookCall = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!fullName || !email || !phone) {
+      toast({
+        title: "Erreur",
+        description: "Veuillez remplir tous les champs",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    console.log("Déclenchement du webhook GHL pour appel:", { fullName, email, phone });
+
+    try {
+      // Replace with your GoHighLevel webhook URL
+      const ghlWebhookUrl = "YOUR_GHL_WEBHOOK_URL_HERE";
+      
+      const response = await fetch(ghlWebhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "no-cors",
+        body: JSON.stringify({
+          fullName,
+          email,
+          phone,
+          timestamp: new Date().toISOString(),
+          source: "CallAI Landing Page",
+          action: "book_call_request"
+        }),
+      });
+
+      toast({
+        title: "Demande envoyée !",
+        description: "Nous vous appelons dans les prochaines minutes.",
+      });
+
+      // Reset form
+      setFullName("");
+      setEmail("");
+      setPhone("");
+    } catch (error) {
+      console.error("Erreur lors du déclenchement du webhook:", error);
+      toast({
+        title: "Erreur",
+        description: "Une erreur est survenue. Veuillez réessayer.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <section className="min-h-screen bg-black flex items-center justify-center relative overflow-hidden">
       {/* Background gradient */}
@@ -32,6 +97,52 @@ const Hero = () => {
             et nos chatbots intelligents, intégrés dans votre CRM.
           </p>
 
+          {/* Call Booking Form */}
+          <div className="bg-gray-800/60 backdrop-blur-sm rounded-2xl p-8 border border-gray-600/30 mb-10 max-w-md mx-auto">
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Réservez votre appel gratuit
+            </h3>
+            <p className="text-gray-200 mb-6">
+              Nous vous appelons dans les 5 minutes qui suivent
+            </p>
+            
+            <form onSubmit={handleBookCall} className="space-y-4">
+              <Input
+                type="text"
+                placeholder="Nom complet"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                className="bg-gray-700/50 border-gray-600/50 text-white placeholder:text-gray-400 focus:border-white/50"
+                required
+              />
+              <Input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="bg-gray-700/50 border-gray-600/50 text-white placeholder:text-gray-400 focus:border-white/50"
+                required
+              />
+              <Input
+                type="tel"
+                placeholder="Numéro de téléphone (uniquement pour les appelles)"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className="bg-gray-700/50 border-gray-600/50 text-white placeholder:text-gray-400 focus:border-white/50"
+                required
+              />
+              <Button 
+                type="submit" 
+                size="lg" 
+                className="w-full bg-white text-black hover:bg-gray-200 transition-all duration-300 font-semibold"
+                disabled={isLoading}
+              >
+                {isLoading ? "Démarrage en cours..." : "Démarrer l'appel"}
+                <Phone className="ml-2" size={20} />
+              </Button>
+            </form>
+          </div>
+
           {/* Key benefits */}
           <div className="flex flex-wrap justify-center gap-6 mb-10">
             <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
@@ -51,15 +162,15 @@ const Hero = () => {
           {/* Stats */}
           <div className="mt-16 grid grid-cols-2 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="text-3xl font-bold text-white mb-2">95%</div>
-              <div className="text-gray-400">Leads qualifiés</div>
+              <div className="text-3xl font-bold text-white mb-2">Leads</div>
+              <div className="text-gray-400">Qualifiés automatiquement</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-white mb-2">24/7</div>
               <div className="text-gray-400">Disponibilité</div>
             </div>
             <div className="text-center col-span-2 md:col-span-1">
-              <div className="text-3xl font-bold text-white mb-2">+50%</div>
+              <div className="text-3xl font-bold text-white mb-2">Plus</div>
               <div className="text-gray-400">Productivité agents</div>
             </div>
           </div>
