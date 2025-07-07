@@ -68,6 +68,10 @@ const Hero = () => {
     }
   };
 
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="min-h-screen bg-black flex items-center justify-center relative overflow-hidden">
       {/* Background gradient */}
@@ -97,50 +101,19 @@ const Hero = () => {
             et nos chatbots intelligents, intégrés dans votre CRM.
           </p>
 
-          {/* Call Booking Form */}
-          <div className="bg-gray-800/60 backdrop-blur-sm rounded-2xl p-8 border border-gray-600/30 mb-10 max-w-md mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Réservez votre appel gratuit
-            </h3>
-            <p className="text-gray-200 mb-6">
-              Nous vous appelons dans les 5 minutes qui suivent
+          {/* Quick CTA for impatient users */}
+          <div className="mb-10">
+            <Button 
+              onClick={scrollToContact}
+              size="lg" 
+              className="bg-white text-black hover:bg-gray-200 transition-all duration-300 font-semibold"
+            >
+              Réserver mon appel maintenant
+              <Phone className="ml-2" size={20} />
+            </Button>
+            <p className="text-gray-400 text-sm mt-2">
+              Pour les impatients - Accès direct au formulaire ↓
             </p>
-            
-            <form onSubmit={handleBookCall} className="space-y-4">
-              <Input
-                type="text"
-                placeholder="Nom complet"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-                className="bg-gray-700/50 border-gray-600/50 text-white placeholder:text-gray-400 focus:border-white/50"
-                required
-              />
-              <Input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="bg-gray-700/50 border-gray-600/50 text-white placeholder:text-gray-400 focus:border-white/50"
-                required
-              />
-              <Input
-                type="tel"
-                placeholder="Numéro de téléphone (uniquement pour les appelles)"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                className="bg-gray-700/50 border-gray-600/50 text-white placeholder:text-gray-400 focus:border-white/50"
-                required
-              />
-              <Button 
-                type="submit" 
-                size="lg" 
-                className="w-full bg-white text-black hover:bg-gray-200 transition-all duration-300 font-semibold"
-                disabled={isLoading}
-              >
-                {isLoading ? "Démarrage en cours..." : "Démarrer l'appel"}
-                <Phone className="ml-2" size={20} />
-              </Button>
-            </form>
           </div>
 
           {/* Key benefits */}

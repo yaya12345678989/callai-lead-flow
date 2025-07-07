@@ -1,11 +1,74 @@
 
-import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleBookCall = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!fullName || !email || !phone) {
+      toast({
+        title: "Erreur",
+        description: "Veuillez remplir tous les champs",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    console.log("Déclenchement du webhook GHL pour appel:", { fullName, email, phone });
+
+    try {
+      // Replace with your GoHighLevel webhook URL
+      const ghlWebhookUrl = "YOUR_GHL_WEBHOOK_URL_HERE";
+      
+      const response = await fetch(ghlWebhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "no-cors",
+        body: JSON.stringify({
+          fullName,
+          email,
+          phone,
+          timestamp: new Date().toISOString(),
+          source: "CallAI Landing Page - Contact Form",
+          action: "book_call_request"
+        }),
+      });
+
+      toast({
+        title: "Demande envoyée !",
+        description: "Nous vous appelons dans les prochaines minutes.",
+      });
+
+      // Reset form
+      setFullName("");
+      setEmail("");
+      setPhone("");
+    } catch (error) {
+      console.error("Erreur lors du déclenchement du webhook:", error);
+      toast({
+        title: "Erreur",
+        description: "Une erreur est survenue. Veuillez réessayer.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-20 bg-gradient-to-b from-black to-gray-900">
       <div className="container mx-auto px-4">
@@ -15,120 +78,60 @@ const Contact = () => {
             Prêt à transformer votre agence ?
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Contactez-nous pour découvrir comment CallAI peut révolutionner 
+            Réservez votre appel maintenant et découvrez comment CallAI peut révolutionner 
             la gestion de vos leads immobiliers.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
-            <CardHeader>
-              <CardTitle className="text-white text-2xl">Demander une démonstration</CardTitle>
-              <CardDescription className="text-gray-300">
-                Remplissez le formulaire et nous vous recontactons sous 24h
-              </CardDescription>
+        {/* Call Booking Form */}
+        <div className="max-w-md mx-auto">
+          <Card className="bg-gray-800/60 backdrop-blur-sm border border-gray-600/30">
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl font-bold text-white">
+                Réservez votre appel gratuit
+              </CardTitle>
+              <p className="text-gray-200">
+                Nous vous appelons dans les 5 minutes qui suivent
+              </p>
             </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="grid grid-cols-2 gap-4">
-                <Input 
-                  placeholder="Prénom" 
-                  className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+            <CardContent>
+              <form onSubmit={handleBookCall} className="space-y-4">
+                <Input
+                  type="text"
+                  placeholder="Nom complet"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="bg-gray-700/50 border-gray-600/50 text-white placeholder:text-gray-400 focus:border-white/50"
+                  required
                 />
-                <Input 
-                  placeholder="Nom" 
-                  className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="bg-gray-700/50 border-gray-600/50 text-white placeholder:text-gray-400 focus:border-white/50"
+                  required
                 />
-              </div>
-              <Input 
-                placeholder="Email professionnel" 
-                type="email"
-                className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
-              />
-              <Input 
-                placeholder="Téléphone" 
-                type="tel"
-                className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
-              />
-              <Input 
-                placeholder="Nom de votre agence" 
-                className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
-              />
-              <Textarea 
-                placeholder="Parlez-nous de vos besoins..." 
-                className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 min-h-[120px]"
-              />
-              <Button size="lg" className="w-full bg-white text-black hover:bg-gray-200 transition-all duration-300">
-                Demander ma démo gratuite
-                <ArrowRight className="ml-2" size={20} />
-              </Button>
+                <Input
+                  type="tel"
+                  placeholder="Numéro de téléphone (uniquement pour les appels)"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="bg-gray-700/50 border-gray-600/50 text-white placeholder:text-gray-400 focus:border-white/50"
+                  required
+                />
+                <Button 
+                  type="submit" 
+                  size="lg" 
+                  className="w-full bg-white text-black hover:bg-gray-200 transition-all duration-300 font-semibold"
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Démarrage en cours..." : "Démarrer l'appel"}
+                  <ArrowRight className="ml-2" size={20} />
+                </Button>
+              </form>
             </CardContent>
           </Card>
-
-          {/* Contact Info */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-6">Contactez notre équipe</h3>
-              <p className="text-gray-300 text-lg mb-8">
-                Notre équipe d'experts est là pour vous accompagner dans votre transformation digitale.
-              </p>
-            </div>
-
-            <div className="space-y-6">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                  <Mail className="text-white" size={24} />
-                </div>
-                <div>
-                  <p className="text-white font-semibold">Email</p>
-                  <p className="text-gray-300">contact@callai.fr</p>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                  <Phone className="text-white" size={24} />
-                </div>
-                <div>
-                  <p className="text-white font-semibold">Téléphone</p>
-                  <p className="text-gray-300">+33 1 XX XX XX XX</p>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                  <MapPin className="text-white" size={24} />
-                </div>
-                <div>
-                  <p className="text-white font-semibold">Adresse</p>
-                  <p className="text-gray-300">Paris, France</p>
-                </div>
-              </div>
-            </div>
-
-            {/* CTA Cards */}
-            <div className="grid gap-4 mt-8">
-              <Card className="bg-gradient-to-r from-white/10 to-white/5 border-white/10 p-6 hover:from-white/15 hover:to-white/10 transition-all duration-300 cursor-pointer">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="text-white font-semibold mb-2">Démo personnalisée</h4>
-                    <p className="text-gray-300 text-sm">Découvrez CallAI en action</p>
-                  </div>
-                  <ArrowRight className="text-white" size={20} />
-                </div>
-              </Card>
-
-              <Card className="bg-gradient-to-r from-white/10 to-white/5 border-white/10 p-6 hover:from-white/15 hover:to-white/10 transition-all duration-300 cursor-pointer">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="text-white font-semibold mb-2">Audit gratuit</h4>
-                    <p className="text-gray-300 text-sm">Analysons vos besoins</p>
-                  </div>
-                  <ArrowRight className="text-white" size={20} />
-                </div>
-              </Card>
-            </div>
-          </div>
         </div>
       </div>
     </section>
