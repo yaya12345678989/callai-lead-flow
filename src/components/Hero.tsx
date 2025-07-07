@@ -48,17 +48,6 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-black hover:bg-gray-200 transition-all duration-300 transform hover:scale-105">
-              Demander une démo
-              <ArrowRight className="ml-2" size={20} />
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black transition-all duration-300">
-              Voir nos solutions
-            </Button>
-          </div>
-
           {/* Stats */}
           <div className="mt-16 grid grid-cols-2 md:grid-cols-3 gap-8">
             <div className="text-center">
