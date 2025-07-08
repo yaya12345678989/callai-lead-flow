@@ -1,3 +1,4 @@
+
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -37,10 +38,10 @@ const Contact = () => {
     
     console.log("=== DÉBUT DEBUG WEBHOOK ===");
     console.log("Payload à envoyer:", JSON.stringify(payload, null, 2));
-    console.log("URL cible:", "https://services.leadconnectorhq.com/hooks/9VGGYVcuzJTnVAuZ3Dkf/webhook-trigger/d99b9d60-7d8e-4521-9c33-c7a9743fc650");
+    console.log("URL cible:", "https://services.leadconnectorhq.com/hooks/9VGGYVcuzJTnVAuZ3Dkf/webhook-trigger/4e26e6eb-7e46-4664-ac80-84b54731138d");
 
     try {
-      const ghlWebhookUrl = "https://services.leadconnectorhq.com/hooks/9VGGYVcuzJTnVAuZ3Dkf/webhook-trigger/d99b9d60-7d8e-4521-9c33-c7a9743fc650";
+      const ghlWebhookUrl = "https://services.leadconnectorhq.com/hooks/9VGGYVcuzJTnVAuZ3Dkf/webhook-trigger/4e26e6eb-7e46-4664-ac80-84b54731138d";
       
       // Première tentative - avec CORS normal
       console.log("Tentative 1: Requête normale (avec CORS)");

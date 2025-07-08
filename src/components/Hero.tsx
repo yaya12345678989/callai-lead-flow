@@ -1,3 +1,4 @@
+
 import { ArrowRight, Phone, MessageSquare, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -38,7 +39,7 @@ const Hero = () => {
     console.log("Payload à envoyer:", JSON.stringify(payload, null, 2));
 
     try {
-      const ghlWebhookUrl = "https://services.leadconnectorhq.com/hooks/9VGGYVcuzJTnVAuZ3Dkf/webhook-trigger/d99b9d60-7d8e-4521-9c33-c7a9743fc650";
+      const ghlWebhookUrl = "https://services.leadconnectorhq.com/hooks/9VGGYVcuzJTnVAuZ3Dkf/webhook-trigger/4e26e6eb-7e46-4664-ac80-84b54731138d";
       
       // Première tentative - avec CORS normal
       console.log("Hero - Tentative 1: Requête normale (avec CORS)");
@@ -153,7 +154,7 @@ const Hero = () => {
               <Phone className="ml-2" size={20} />
             </Button>
             <p className="text-gray-400 text-sm mt-2">
-              Pour les impatients - Accès direct au formulaire ↓
+              Accès direct au formulaire ↓
             </p>
           </div>
 
