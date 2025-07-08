@@ -1,4 +1,3 @@
-
 import { ArrowRight, Phone, MessageSquare, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,27 +24,65 @@ const Hero = () => {
     }
 
     setIsLoading(true);
-    console.log("Déclenchement du webhook GHL pour appel:", { fullName, email, phone });
+    
+    const payload = {
+      fullName,
+      email,
+      phone,
+      timestamp: new Date().toISOString(),
+      source: "CallAI Landing Page - Hero Form",
+      action: "book_call_request"
+    };
+    
+    console.log("=== DÉBUT DEBUG WEBHOOK HERO ===");
+    console.log("Payload à envoyer:", JSON.stringify(payload, null, 2));
 
     try {
       const ghlWebhookUrl = "https://services.leadconnectorhq.com/hooks/9VGGYVcuzJTnVAuZ3Dkf/webhook-trigger/d99b9d60-7d8e-4521-9c33-c7a9743fc650";
       
+      // Première tentative - avec CORS normal
+      console.log("Hero - Tentative 1: Requête normale (avec CORS)");
+      try {
+        const response = await fetch(ghlWebhookUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+        
+        console.log("Hero - Réponse reçue:", response.status, response.statusText);
+        const responseText = await response.text();
+        console.log("Hero - Contenu de la réponse:", responseText);
+        
+        if (response.ok) {
+          toast({
+            title: "Demande envoyée !",
+            description: "Nous vous appelons dans les prochaines minutes.",
+          });
+          setFullName("");
+          setEmail("");
+          setPhone("");
+          return;
+        }
+      } catch (corsError) {
+        console.log("Hero - Erreur CORS détectée, tentative avec no-cors:", corsError);
+      }
+      
+      // Deuxième tentative - no-cors en fallback
+      console.log("Hero - Tentative 2: Requête no-cors");
       const response = await fetch(ghlWebhookUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         mode: "no-cors",
-        body: JSON.stringify({
-          fullName,
-          email,
-          phone,
-          timestamp: new Date().toISOString(),
-          source: "CallAI Landing Page",
-          action: "book_call_request"
-        }),
+        body: JSON.stringify(payload),
       });
 
+      console.log("Hero - Requête no-cors envoyée");
+      
       toast({
         title: "Demande envoyée !",
         description: "Nous vous appelons dans les prochaines minutes.",
@@ -56,14 +93,19 @@ const Hero = () => {
       setEmail("");
       setPhone("");
     } catch (error) {
-      console.error("Erreur lors du déclenchement du webhook:", error);
+      console.error("=== ERREUR CRITIQUE HERO ===");
+      console.error("Type d'erreur:", error.constructor.name);
+      console.error("Message d'erreur:", error.message);
+      console.error("Erreur complète:", error);
+      
       toast({
         title: "Erreur",
-        description: "Une erreur est survenue. Veuillez réessayer.",
+        description: "Une erreur est survenue. Vérifiez la console pour plus de détails.",
         variant: "destructive",
       });
     } finally {
       setIsLoading(false);
+      console.log("=== FIN DEBUG WEBHOOK HERO ===");
     }
   };
 
