@@ -19,10 +19,10 @@ const Solutions = () => {
         {/* Problem & Solution */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Problem */}
-          <Card className="bg-red-600 border-red-500/50">
+          <Card className="bg-red-900/80 border-red-800/50">
             <CardHeader>
               <CardTitle className="text-white text-2xl flex items-center">
-                <span className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold mr-3">!</span>
+                <span className="w-8 h-8 bg-red-700 rounded-full flex items-center justify-center text-white font-bold mr-3">!</span>
                 Le Problème
               </CardTitle>
             </CardHeader>
@@ -36,7 +36,7 @@ const Solutions = () => {
                 <li>• Prospects pas prêts à acheter/vendre</li>
                 <li>• Perte de temps sur des leads froids</li>
               </ul>
-              <div className="bg-red-500/40 p-4 rounded-lg border border-red-400/30">
+              <div className="bg-red-800/40 p-4 rounded-lg border border-red-700/30">
                 <p className="text-white font-semibold">
                   Résultat : Moins de temps pour vendre = Moins de commissions
                 </p>
@@ -45,10 +45,10 @@ const Solutions = () => {
           </Card>
 
           {/* Solution */}
-          <Card className="bg-green-600 border-green-500/50">
+          <Card className="bg-emerald-900/80 border-emerald-800/50">
             <CardHeader>
               <CardTitle className="text-white text-2xl flex items-center">
-                <span className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold mr-3">✓</span>
+                <span className="w-8 h-8 bg-emerald-700 rounded-full flex items-center justify-center text-white font-bold mr-3">✓</span>
                 Notre Solution
               </CardTitle>
             </CardHeader>
@@ -62,7 +62,7 @@ const Solutions = () => {
                 <li>• Prise de RDV automatique</li>
                 <li>• Seuls les leads chauds vous sont transmis</li>
               </ul>
-              <div className="bg-green-500/40 p-4 rounded-lg border border-green-400/30">
+              <div className="bg-emerald-800/40 p-4 rounded-lg border border-emerald-700/30">
                 <p className="text-white font-semibold">
                   Résultat : 100% de votre temps sur des prospects qualifiés
                 </p>

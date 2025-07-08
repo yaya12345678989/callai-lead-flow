@@ -1,3 +1,4 @@
+
 import { ArrowRight, Phone, MessageSquare, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -27,7 +28,7 @@ const Hero = () => {
     console.log("Déclenchement du webhook GHL pour appel:", { fullName, email, phone });
 
     try {
-      const ghlWebhookUrl = "https://services.leadconnectorhq.com/hooks/9VGGYVcuzJTnVAuZ3Dkf/webhook-trigger/6e48cdc6-5aa8-4b99-8d2b-ea13b928c8f3";
+      const ghlWebhookUrl = "https://services.leadconnectorhq.com/hooks/9VGGYVcuzJTnVAuZ3Dkf/webhook-trigger/d99b9d60-7d8e-4521-9c33-c7a9743fc650";
       
       const response = await fetch(ghlWebhookUrl, {
         method: "POST",
