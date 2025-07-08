@@ -13,6 +13,33 @@ const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
+  const formatPhoneToE164 = (phoneNumber: string) => {
+    // Nettoyer le numéro (enlever tous les caractères non numériques)
+    const cleaned = phoneNumber.replace(/\D/g, '');
+    
+    // Si le numéro commence par 0, le remplacer par +33
+    if (cleaned.startsWith('0')) {
+      return '+33' + cleaned.substring(1);
+    }
+    
+    // Si le numéro commence par 33, ajouter le +
+    if (cleaned.startsWith('33')) {
+      return '+' + cleaned;
+    }
+    
+    // Si le numéro ne commence pas par + et n'est pas français, ajouter +33
+    if (!cleaned.startsWith('+') && cleaned.length === 10) {
+      return '+33' + cleaned.substring(1);
+    }
+    
+    return cleaned.startsWith('+') ? cleaned : '+33' + cleaned;
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.target.value;
+    setPhone(input);
+  };
+
   const handleBookCall = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -27,10 +54,12 @@ const Contact = () => {
 
     setIsLoading(true);
     
+    const formattedPhone = formatPhoneToE164(phone);
+    
     const payload = {
       fullName,
       email,
-      phone,
+      phone: formattedPhone,
       timestamp: new Date().toISOString(),
       source: "CallAI Landing Page - Contact Form",
       action: "book_call_request"
@@ -38,6 +67,7 @@ const Contact = () => {
     
     console.log("=== DÉBUT DEBUG WEBHOOK ===");
     console.log("Payload à envoyer:", JSON.stringify(payload, null, 2));
+    console.log("Téléphone formaté:", formattedPhone);
     console.log("URL cible:", "https://services.leadconnectorhq.com/hooks/9VGGYVcuzJTnVAuZ3Dkf/webhook-trigger/4e26e6eb-7e46-4664-ac80-84b54731138d");
 
     try {
@@ -158,9 +188,9 @@ const Contact = () => {
                 />
                 <Input
                   type="tel"
-                  placeholder="Numéro de téléphone (uniquement pour les appels)"
+                  placeholder="Numéro de téléphone (ex: 0623456789 → +33623456789)"
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  onChange={handlePhoneChange}
                   className="bg-gray-700/50 border-gray-600/50 text-white placeholder:text-gray-400 focus:border-white/50"
                   required
                 />

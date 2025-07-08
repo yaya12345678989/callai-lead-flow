@@ -12,6 +12,33 @@ const Hero = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
+  const formatPhoneToE164 = (phoneNumber: string) => {
+    // Nettoyer le numéro (enlever tous les caractères non numériques)
+    const cleaned = phoneNumber.replace(/\D/g, '');
+    
+    // Si le numéro commence par 0, le remplacer par +33
+    if (cleaned.startsWith('0')) {
+      return '+33' + cleaned.substring(1);
+    }
+    
+    // Si le numéro commence par 33, ajouter le +
+    if (cleaned.startsWith('33')) {
+      return '+' + cleaned;
+    }
+    
+    // Si le numéro ne commence pas par + et n'est pas français, ajouter +33
+    if (!cleaned.startsWith('+') && cleaned.length === 10) {
+      return '+33' + cleaned.substring(1);
+    }
+    
+    return cleaned.startsWith('+') ? cleaned : '+33' + cleaned;
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.target.value;
+    setPhone(input);
+  };
+
   const handleBookCall = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -26,10 +53,12 @@ const Hero = () => {
 
     setIsLoading(true);
     
+    const formattedPhone = formatPhoneToE164(phone);
+    
     const payload = {
       fullName,
       email,
-      phone,
+      phone: formattedPhone,
       timestamp: new Date().toISOString(),
       source: "CallAI Landing Page - Hero Form",
       action: "book_call_request"
@@ -37,6 +66,7 @@ const Hero = () => {
     
     console.log("=== DÉBUT DEBUG WEBHOOK HERO ===");
     console.log("Payload à envoyer:", JSON.stringify(payload, null, 2));
+    console.log("Téléphone formaté:", formattedPhone);
 
     try {
       const ghlWebhookUrl = "https://services.leadconnectorhq.com/hooks/9VGGYVcuzJTnVAuZ3Dkf/webhook-trigger/4e26e6eb-7e46-4664-ac80-84b54731138d";
@@ -143,8 +173,8 @@ const Hero = () => {
             et nos chatbots intelligents, intégrés dans votre CRM.
           </p>
 
-          {/* Quick CTA for impatient users */}
-          <div className="mb-10">
+          {/* Quick CTA for impatient users - Centré */}
+          <div className="mb-10 flex flex-col items-center">
             <Button 
               onClick={scrollToContact}
               size="lg" 
@@ -158,7 +188,7 @@ const Hero = () => {
             </p>
           </div>
 
-          {/* Key benefits */}
+          {/* Key benefits - Centré */}
           <div className="flex flex-wrap justify-center gap-6 mb-10">
             <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
               <Phone size={20} className="text-white" />
@@ -174,8 +204,8 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-3 gap-8">
+          {/* Stats - Centré */}
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
             <div className="text-center">
               <div className="text-3xl font-bold text-white mb-2">Leads</div>
               <div className="text-gray-400">Qualifiés automatiquement</div>
