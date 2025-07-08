@@ -69,7 +69,7 @@ const Hero = () => {
     console.log("Téléphone formaté:", formattedPhone);
 
     try {
-      const ghlWebhookUrl = "https://services.leadconnectorhq.com/hooks/9VGGYVcuzJTnVAuZ3Dkf/webhook-trigger/4e26e6eb-7e46-4664-ac80-84b54731138d";
+      const ghlWebhookUrl = "https://services.leadconnectorhq.com/hooks/9VGGYVcuzJTnVAuZ3Dkf/webhook-trigger/6c75198f-4903-4abe-bc0a-257bae3d2cfc";
       
       // Première tentative - avec CORS normal
       console.log("Hero - Tentative 1: Requête normale (avec CORS)");
