@@ -1,11 +1,10 @@
+
 import { ArrowRight, Phone, MessageSquare, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
-import './phone-input-styles.css';
+import PhoneInputWithValidation from './PhoneInputWithValidation';
 
 const Hero = () => {
   const [fullName, setFullName] = useState("");

@@ -1,12 +1,11 @@
+
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
-import './phone-input-styles.css';
+import PhoneInputWithValidation from './PhoneInputWithValidation';
 
 const Contact = () => {
   const [fullName, setFullName] = useState("");
@@ -160,19 +159,10 @@ const Contact = () => {
                   required
                 />
                 <div className="space-y-1">
-                  <PhoneInput
-                    international
-                    countryCallingCodeEditable={false}
-                    defaultCountry="FR"
+                  <PhoneInputWithValidation
                     value={phone}
                     onChange={setPhone}
-                    className="phone-input-custom"
                     placeholder="Numéro de téléphone"
-                    style={{
-                      '--PhoneInput-color--focus': '#ffffff',
-                      '--PhoneInputInternationalIconPhone-opacity': '0.8',
-                      '--PhoneInputInternationalIconGlobe-opacity': '0.65'
-                    }}
                   />
                 </div>
                 <Button 
