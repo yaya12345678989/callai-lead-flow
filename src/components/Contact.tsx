@@ -15,15 +15,6 @@ const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  // Validation du numéro de téléphone
-  const isPhoneValid = phone && isValidPhoneNumber(phone);
-  
-  // Validation de l'email
-  const isEmailValid = email && email.includes('@');
-  
-  // Le formulaire est valide si tous les champs sont remplis et valides
-  const isFormValid = fullName && isEmailValid && isPhoneValid;
-
   const handleBookCall = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -36,7 +27,7 @@ const Contact = () => {
       return;
     }
 
-    if (!isPhoneValid) {
+    if (!isValidPhoneNumber(phone)) {
       toast({
         title: "Erreur",
         description: "Veuillez entrer un numéro de téléphone valide",
@@ -45,7 +36,7 @@ const Contact = () => {
       return;
     }
 
-    if (!isEmailValid) {
+    if (!email.includes('@')) {
       toast({
         title: "Erreur",
         description: "Veuillez entrer une adresse email valide",
@@ -196,8 +187,8 @@ const Contact = () => {
                 <Button 
                   type="submit" 
                   size="lg" 
-                  className="w-full bg-white text-black hover:bg-gray-200 transition-all duration-300 font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed"
-                  disabled={isLoading || !isFormValid}
+                  className="w-full bg-white text-black hover:bg-gray-200 transition-all duration-300 font-semibold"
+                  disabled={isLoading}
                 >
                   {isLoading ? "Démarrage en cours..." : "Démarrer l'appel"}
                   <ArrowRight className="ml-2" size={20} />
