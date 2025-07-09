@@ -1,9 +1,11 @@
-
 import { ArrowRight, Phone, MessageSquare, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+import './phone-input-styles.css';
 
 const Hero = () => {
   const [fullName, setFullName] = useState("");
@@ -11,33 +13,6 @@ const Hero = () => {
   const [phone, setPhone] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
-
-  const formatPhoneToE164 = (phoneNumber: string) => {
-    // Nettoyer le numéro (enlever tous les caractères non numériques)
-    const cleaned = phoneNumber.replace(/\D/g, '');
-    
-    // Si le numéro commence par 0, le remplacer par +33
-    if (cleaned.startsWith('0')) {
-      return '+33' + cleaned.substring(1);
-    }
-    
-    // Si le numéro commence par 33, ajouter le +
-    if (cleaned.startsWith('33')) {
-      return '+' + cleaned;
-    }
-    
-    // Si le numéro ne commence pas par + et n'est pas français, ajouter +33
-    if (!cleaned.startsWith('+') && cleaned.length === 10) {
-      return '+33' + cleaned.substring(1);
-    }
-    
-    return cleaned.startsWith('+') ? cleaned : '+33' + cleaned;
-  };
-
-  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const input = e.target.value;
-    setPhone(input);
-  };
 
   const handleBookCall = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,12 +28,10 @@ const Hero = () => {
 
     setIsLoading(true);
     
-    const formattedPhone = formatPhoneToE164(phone);
-    
     const payload = {
       fullName,
       email,
-      phone: formattedPhone,
+      phone,
       timestamp: new Date().toISOString(),
       source: "CallAI Landing Page - Hero Form",
       action: "book_call_request"
@@ -66,10 +39,10 @@ const Hero = () => {
     
     console.log("=== DÉBUT DEBUG WEBHOOK HERO ===");
     console.log("Payload à envoyer:", JSON.stringify(payload, null, 2));
-    console.log("Téléphone formaté:", formattedPhone);
+    console.log("Téléphone formaté:", phone);
 
     try {
-      const ghlWebhookUrl = "https://services.leadconnectorhq.com/hooks/9VGGYVcuzJTnVAuZ3Dkf/webhook-trigger/6c75198f-4903-4abe-bc0a-257bae3d2cfc";
+      const ghlWebhookUrl = "https://services.leadconnectorhq.com/hooks/9VGGYVcuzJTnVAuZ3Dkf/webhook-trigger/490bc4f2-3ed8-4b8c-91be-5b51c6d2490f";
       
       // Première tentative - avec CORS normal
       console.log("Hero - Tentative 1: Requête normale (avec CORS)");
