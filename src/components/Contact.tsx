@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import PhoneInputWithValidation from './PhoneInputWithValidation';
+import { isValidPhoneNumber } from 'react-phone-number-input';
 
 const Contact = () => {
   const [fullName, setFullName] = useState("");
@@ -14,6 +15,15 @@ const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
+  // Validation du numéro de téléphone
+  const isPhoneValid = phone && isValidPhoneNumber(phone);
+  
+  // Validation de l'email
+  const isEmailValid = email && email.includes('@');
+  
+  // Le formulaire est valide si tous les champs sont remplis et valides
+  const isFormValid = fullName && isEmailValid && isPhoneValid;
+
   const handleBookCall = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -21,6 +31,24 @@ const Contact = () => {
       toast({
         title: "Erreur",
         description: "Veuillez remplir tous les champs",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!isPhoneValid) {
+      toast({
+        title: "Erreur",
+        description: "Veuillez entrer un numéro de téléphone valide",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!isEmailValid) {
+      toast({
+        title: "Erreur",
+        description: "Veuillez entrer une adresse email valide",
         variant: "destructive",
       });
       return;
@@ -168,8 +196,8 @@ const Contact = () => {
                 <Button 
                   type="submit" 
                   size="lg" 
-                  className="w-full bg-white text-black hover:bg-gray-200 transition-all duration-300 font-semibold"
-                  disabled={isLoading}
+                  className="w-full bg-white text-black hover:bg-gray-200 transition-all duration-300 font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed"
+                  disabled={isLoading || !isFormValid}
                 >
                   {isLoading ? "Démarrage en cours..." : "Démarrer l'appel"}
                   <ArrowRight className="ml-2" size={20} />

@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import PhoneInputWithValidation from './PhoneInputWithValidation';
+import { isValidPhoneNumber } from 'react-phone-number-input';
 
 const Hero = () => {
   const [fullName, setFullName] = useState("");
@@ -13,6 +14,15 @@ const Hero = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
+  // Validation du numéro de téléphone
+  const isPhoneValid = phone && isValidPhoneNumber(phone);
+  
+  // Validation de l'email
+  const isEmailValid = email && email.includes('@');
+  
+  // Le formulaire est valide si tous les champs sont remplis et valides
+  const isFormValid = fullName && isEmailValid && isPhoneValid;
+
   const handleBookCall = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -20,6 +30,24 @@ const Hero = () => {
       toast({
         title: "Erreur",
         description: "Veuillez remplir tous les champs",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!isPhoneValid) {
+      toast({
+        title: "Erreur",
+        description: "Veuillez entrer un numéro de téléphone valide",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!isEmailValid) {
+      toast({
+        title: "Erreur",
+        description: "Veuillez entrer une adresse email valide",
         variant: "destructive",
       });
       return;
