@@ -81,7 +81,7 @@ const Hero = () => {
         if (response.ok) {
           toast({
             title: "Demande envoyée !",
-            description: "Nous vous appelons dans les prochaines minutes.",
+            description: "Votre IA d'appel vous contacte dans moins de 10 secondes.",
           });
           setFullName("");
           setEmail("");
@@ -107,7 +107,7 @@ const Hero = () => {
       
       toast({
         title: "Demande envoyée !",
-        description: "Nous vous appelons dans les prochaines minutes.",
+        description: "Votre IA d'appel vous contacte dans moins de 10 secondes.",
       });
 
       // Reset form
@@ -151,17 +151,17 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Main heading */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-            L'IA qui révolutionne
+            Libérez vos agents
             <br />
             <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              votre immobilier
+              avec l'IA qui qualifie
             </span>
           </h1>
 
           {/* Subheading */}
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Transformez chaque lead entrant en opportunité qualifiée grâce à notre IA vocale 
-            et nos chatbots intelligents, intégrés dans votre CRM.
+            Transformez chaque contact entrant en opportunité qualifiée grâce à votre IA d'appel 
+            personnalisable et nos chatbots intelligents, intégrés dans votre CRM.
           </p>
 
           {/* Quick CTA for impatient users - Centré */}
@@ -171,7 +171,7 @@ const Hero = () => {
               size="lg" 
               className="bg-white text-black hover:bg-gray-200 transition-all duration-300 font-semibold"
             >
-              Réserver mon appel maintenant
+              Votre IA d'appel vous contacte en moins de 10 secondes
               <Phone className="ml-2" size={20} />
             </Button>
             <p className="text-gray-400 text-sm mt-2">
@@ -183,22 +183,22 @@ const Hero = () => {
           <div className="flex flex-wrap justify-center gap-6 mb-10">
             <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
               <Phone size={20} className="text-white" />
-              <span className="text-white">IA Vocale 24/7</span>
+              <span className="text-white">Rapidité</span>
             </div>
             <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
               <MessageSquare size={20} className="text-white" />
-              <span className="text-white">Chatbots Intelligents</span>
+              <span className="text-white">Précision</span>
             </div>
             <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
               <Settings size={20} className="text-white" />
-              <span className="text-white">Intégration CRM</span>
+              <span className="text-white">Qualification</span>
             </div>
           </div>
 
           {/* Stats - Centré */}
           <div className="mt-16 grid grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
             <div className="text-center">
-              <div className="text-3xl font-bold text-white mb-2">Leads</div>
+              <div className="text-3xl font-bold text-white mb-2">Contacts</div>
               <div className="text-gray-400">Qualifiés automatiquement</div>
             </div>
             <div className="text-center">
@@ -207,7 +207,7 @@ const Hero = () => {
             </div>
             <div className="text-center col-span-2 md:col-span-1">
               <div className="text-3xl font-bold text-white mb-2">Plus</div>
-              <div className="text-gray-400">Productivité agents</div>
+              <div className="text-gray-400">Temps pour vendre</div>
             </div>
           </div>
         </div>

@@ -17,8 +17,8 @@ const Footer = () => {
               <span className="text-white text-xl font-bold">CallAI</span>
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
-              Révolutionnez votre activité immobilière avec l'intelligence artificielle. 
-              Qualification automatique des leads, disponibilité 24/7, et intégration CRM complète.
+              Libérez vos agents avec l'IA qui qualifie : votre assistant IA d'appel personnalisable 
+              transforme chaque contact en opportunité qualifiée en moins de 10 secondes.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
@@ -34,10 +34,10 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">Services</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">IA Vocale</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Chatbots SMS</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">IA Vocale Personnalisable</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Chatbots SMS Intelligents</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Intégration CRM</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Formation</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Formation Agents</a></li>
             </ul>
           </div>
 

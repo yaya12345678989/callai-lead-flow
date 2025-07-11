@@ -6,20 +6,20 @@ const Services = () => {
   const services = [
     {
       icon: Phone,
-      title: "IA Vocale Synthflow",
-      description: "Prise en charge automatique des appels entrants avec qualification intelligente des prospects acheteurs et vendeurs.",
+      title: "IA Vocale Personnalisable",
+      description: "Prise en charge automatique des appels entrants avec qualification intelligente des prospects acheteurs et vendeurs, adaptée à votre agence.",
       features: ["Qualification budget et besoins", "Réponses aux questions fréquentes", "Prise de rendez-vous automatisée"]
     },
     {
       icon: MessageSquare,
-      title: "Chatbot SMS Capri GPT",
-      description: "Suivi des leads non répondants avec des campagnes de nurturing personnalisées et gestion des interactions textuelles.",
+      title: "Chatbot SMS Intelligent",
+      description: "Suivi des contacts non répondants avec des campagnes de nurturing personnalisées et gestion des interactions textuelles.",
       features: ["Nurturing automatisé", "Interactions personnalisées", "Relance intelligente"]
     },
     {
       icon: Database,
       title: "CRM GoHighLevel",
-      description: "Plateforme centrale pour la gestion complète du pipeline de leads avec workflows automatisés.",
+      description: "Plateforme centrale pour la gestion complète du pipeline de contacts avec workflows automatisés.",
       features: ["Pipeline automatisé", "Notifications en temps réel", "Suivi des interactions"]
     }
   ];
@@ -27,18 +27,18 @@ const Services = () => {
   const benefits = [
     {
       icon: TrendingUp,
-      title: "Augmentation des conversions",
-      description: "Maximisez vos taux de conversion grâce à une qualification précise et une réponse immédiate."
+      title: "Maximisation des conversions",
+      description: "Optimisez vos taux de conversion grâce à une qualification précise et une réponse immédiate."
     },
     {
       icon: Clock,
-      title: "Gain de temps",
+      title: "Libération de temps",
       description: "Libérez vos agents des tâches répétitives pour qu'ils se concentrent sur les ventes."
     },
     {
       icon: Users,
       title: "Expérience client optimisée",
-      description: "Offrez une réponse 24/7 avec une personnalisation basée sur l'IA."
+      description: "Offrez une réponse constante avec une personnalisation basée sur l'IA."
     }
   ];
 
@@ -52,7 +52,7 @@ const Services = () => {
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Une suite complète d'outils d'intelligence artificielle pour optimiser 
-            votre gestion des leads immobiliers de A à Z.
+            votre gestion des contacts immobiliers de A à Z.
           </p>
         </div>
 
@@ -85,7 +85,7 @@ const Services = () => {
 
         {/* Benefits */}
         <div className="text-center mb-12">
-          <h3 className="text-3xl font-bold text-white mb-8">Pourquoi choisir CallAI ?</h3>
+          <h3 className="text-3xl font-bold text-white mb-8">Pourquoi vos concurrents choisissent CallAI ?</h3>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8">

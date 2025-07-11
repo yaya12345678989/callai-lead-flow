@@ -5,23 +5,23 @@ const About = () => {
   const values = [
     {
       icon: Lightbulb,
-      title: "Innovation",
-      description: "Intégrer les technologies d'IA les plus avancées pour optimiser les processus immobiliers."
+      title: "Innovation Immobilière",
+      description: "Intégrer les technologies d'IA les plus avancées pour révolutionner la prospection immobilière."
     },
     {
       icon: Zap,
-      title: "Efficacité",
-      description: "Maximiser la productivité et la rapidité de traitement des leads pour nos clients."
+      title: "Efficacité Commerciale",
+      description: "Maximiser le temps de vente de vos agents en éliminant les tâches de qualification répétitives."
     },
     {
       icon: Heart,
-      title: "Personnalisation",
-      description: "Offrir une expérience client sur mesure grâce à l'IA et l'intervention humaine."
+      title: "Personnalisation Agence",
+      description: "Adapter notre IA aux spécificités de votre agence et à votre approche commerciale unique."
     },
     {
       icon: Target,
-      title: "Expertise",
-      description: "Combiner la connaissance du marché immobilier avec la maîtrise technologique."
+      title: "Expertise Métier",
+      description: "Combiner la connaissance approfondie du marché immobilier avec la maîtrise technologique."
     }
   ];
 
@@ -31,7 +31,7 @@ const About = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            À propos de CallAI
+            CallAI : Votre Partenaire IA
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Pionniers de l'immobilier augmenté par l'intelligence artificielle
@@ -48,7 +48,7 @@ const About = () => {
             <p className="text-gray-200 text-lg leading-relaxed">
               Révolutionner l'expérience immobilière en combinant l'expertise humaine avec 
               la puissance de l'intelligence artificielle pour offrir un service de qualification 
-              de leads et de gestion client inégalé, rapide et personnalisé.
+              de contacts et de gestion client inégalé, rapide et personnalisé.
             </p>
           </div>
 
@@ -67,7 +67,7 @@ const About = () => {
 
         {/* Values */}
         <div className="text-center mb-12">
-          <h3 className="text-3xl font-bold text-white mb-8">Nos Valeurs Fondamentales</h3>
+          <h3 className="text-3xl font-bold text-white mb-8">Nos Valeurs Spécifiques à l'Immobilier</h3>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -86,7 +86,7 @@ const About = () => {
         <div className="mt-20 bg-gradient-to-r from-white/5 to-white/10 rounded-2xl p-8 border border-white/10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-white mb-2">100%</div>
+              <div className="text-4xl font-bold text-white mb-2">Complet</div>
               <div className="text-gray-300">Automatisé</div>
             </div>
             <div>
@@ -94,12 +94,12 @@ const About = () => {
               <div className="text-gray-300">Disponible</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-white mb-2">95%</div>
-              <div className="text-gray-300">Précision</div>
+              <div className="text-4xl font-bold text-white mb-2">Précis</div>
+              <div className="text-gray-300">Qualification</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-white mb-2">+50%</div>
-              <div className="text-gray-300">ROI</div>
+              <div className="text-4xl font-bold text-white mb-2">Rapide</div>
+              <div className="text-gray-300">Retour sur investissement</div>
             </div>
           </div>
         </div>

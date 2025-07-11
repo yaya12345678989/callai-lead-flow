@@ -83,7 +83,7 @@ const Contact = () => {
         if (response.ok) {
           toast({
             title: "Demande envoyée !",
-            description: "Nous vous appelons dans les prochaines minutes.",
+            description: "Votre IA d'appel vous contacte dans moins de 10 secondes.",
           });
           setFullName("");
           setEmail("");
@@ -109,7 +109,7 @@ const Contact = () => {
       
       toast({
         title: "Demande envoyée !",
-        description: "Nous vous appelons dans les prochaines minutes. (Vérifiez GHL pour confirmation)",
+        description: "Votre IA d'appel vous contacte dans moins de 10 secondes.",
       });
 
       // Reset form
@@ -140,11 +140,11 @@ const Contact = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Prêt à transformer votre agence ?
+            Testez Votre IA d'Appel Maintenant
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Réservez votre appel maintenant et découvrez comment CallAI peut révolutionner 
-            la gestion de vos leads immobiliers.
+            Remplissez ce formulaire et découvrez comment votre IA d'appel personnalisable 
+            peut révolutionner la qualification de vos contacts immobiliers.
           </p>
         </div>
 
@@ -153,10 +153,10 @@ const Contact = () => {
           <Card className="bg-gray-800/60 backdrop-blur-sm border border-gray-600/30">
             <CardHeader className="text-center">
               <CardTitle className="text-2xl font-bold text-white">
-                Réservez votre appel gratuit
+                Votre IA d'appel vous contacte
               </CardTitle>
               <p className="text-gray-200">
-                Nous vous appelons dans les 5 minutes qui suivent
+                En moins de 10 secondes après ce formulaire
               </p>
             </CardHeader>
             <CardContent>
@@ -190,7 +190,7 @@ const Contact = () => {
                   className="w-full bg-white text-black hover:bg-gray-200 transition-all duration-300 font-semibold"
                   disabled={isLoading}
                 >
-                  {isLoading ? "Démarrage en cours..." : "Démarrer l'appel"}
+                  {isLoading ? "Connexion IA en cours..." : "Déclencher l'appel de mon IA"}
                   <ArrowRight className="ml-2" size={20} />
                 </Button>
               </form>
