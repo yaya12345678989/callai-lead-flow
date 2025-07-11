@@ -190,7 +190,7 @@ const Contact = () => {
                   className="w-full bg-white text-black hover:bg-gray-200 transition-all duration-300 font-semibold"
                   disabled={isLoading}
                 >
-                  {isLoading ? "Connexion IA en cours..." : "Déclencher l'appel de mon IA"}
+                  {isLoading ? "Connexion IA en cours..." : "Démarrer l'appel"}
                   <ArrowRight className="ml-2" size={20} />
                 </Button>
               </form>
