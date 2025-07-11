@@ -57,21 +57,10 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">
-            © 2024 CallAI. Tous droits réservés.
+        <div className="border-t border-white/10 mt-8 pt-8 flex justify-center items-center">
+          <p className="text-gray-400 text-sm text-center">
+            © 2025 CallAI. Tous droits réservés.
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Mentions légales
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Politique de confidentialité
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-              CGV
-            </a>
-          </div>
         </div>
       </div>
     </footer>
