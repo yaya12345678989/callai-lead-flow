@@ -1,4 +1,3 @@
-
 import { ArrowRight, Phone, MessageSquare, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -171,7 +170,7 @@ const Hero = () => {
               size="lg" 
               className="bg-white text-black hover:bg-gray-200 transition-all duration-300 font-semibold"
             >
-              Votre IA d'appel vous contacte en moins de 10 secondes
+              Recevez un Appel de Notre IA !
               <Phone className="ml-2" size={20} />
             </Button>
             <p className="text-gray-400 text-sm mt-2">
