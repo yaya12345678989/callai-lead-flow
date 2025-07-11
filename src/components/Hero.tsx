@@ -1,3 +1,4 @@
+
 import { ArrowRight, Phone, MessageSquare, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -135,7 +136,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen bg-black flex items-center justify-center relative overflow-hidden">
+    <section className="min-h-screen bg-black flex items-center justify-center relative overflow-hidden pt-20 md:pt-0">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
       
