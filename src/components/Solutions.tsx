@@ -59,8 +59,8 @@ const Solutions = () => {
               <ul className="space-y-3 text-gray-100">
                 <li>• Qualification budget et échéance en temps réel</li>
                 <li>• Collecte des besoins précis et motivations</li>
-                <li>• Prise de RDV automatique avec agenda</li>
                 <li>• Seuls les contacts chauds vous sont transmis</li>
+                <li>• Prise de RDV automatique dans votre agenda</li>
               </ul>
               <div className="bg-emerald-800/40 p-4 rounded-lg border border-emerald-700/30">
                 <p className="text-white font-semibold">

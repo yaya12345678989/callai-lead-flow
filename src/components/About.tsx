@@ -83,23 +83,23 @@ const About = () => {
         </div>
 
         {/* Stats */}
-        <div className="mt-20 bg-gradient-to-r from-white/5 to-white/10 rounded-2xl p-8 border border-white/10">
+      <div className="mt-20 bg-gradient-to-r from-white/5 to-white/10 rounded-2xl p-8 border border-white/10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-white mb-2">Complet</div>
-              <div className="text-gray-300">Automatisé</div>
+              <div className="text-gray-300 mb-2">Automatisation</div>
+              <div className="text-4xl font-bold text-white">Totale</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-white mb-2">24/7</div>
-              <div className="text-gray-300">Disponible</div>
+              <div className="text-gray-300 mb-2">Disponiblité</div>
+              <div className="text-4xl font-bold text-white">24/7</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-white mb-2">Précis</div>
-              <div className="text-gray-300">Qualification</div>
+              <div className="text-gray-300 mb-2">Qualification</div>
+              <div className="text-4xl font-bold text-white">Précise</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-white mb-2">Rapide</div>
-              <div className="text-gray-300">Retour sur investissement</div>
+              <div className="text-gray-300 mb-2">Retour sur investissement</div>
+              <div className="text-4xl font-bold text-white">Boosté</div>
             </div>
           </div>
         </div>
