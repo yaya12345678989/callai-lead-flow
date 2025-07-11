@@ -48,7 +48,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li className="flex items-center space-x-2 text-gray-400">
                 <Mail size={16} />
-                <span>contact@callai.fr</span>
+                <span>contact@callai.digital</span>
               </li>
               {/* <li className="flex items-center space-x-2 text-gray-400">
                 <Phone size={16} />
