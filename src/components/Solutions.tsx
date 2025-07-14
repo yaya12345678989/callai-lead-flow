@@ -23,7 +23,7 @@ const Solutions = () => {
             <CardHeader>
               <CardTitle className="text-white text-2xl flex items-center">
                 <span className="w-8 h-8 bg-red-700 rounded-full flex items-center justify-center text-white font-bold mr-3">!</span>
-                Ce Qui Vous Épuise
+                Ce Qui Ralentit Votre Croissance
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -49,12 +49,12 @@ const Solutions = () => {
             <CardHeader>
               <CardTitle className="text-white text-2xl flex items-center">
                 <span className="w-8 h-8 bg-emerald-700 rounded-full flex items-center justify-center text-white font-bold mr-3">✓</span>
-                Votre Solution IA
+                Notre Solution IA
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-white text-lg">
-                Votre IA d'appel personnalisable qualifie automatiquement tous vos contacts entrants :
+                Notre IA d'appel personnalisable qualifie automatiquement tous vos contacts entrants :
               </p>
               <ul className="space-y-3 text-gray-100">
                 <li>• Qualification budget et échéance en temps réel</li>
