@@ -136,7 +136,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen bg-black flex items-center justify-center relative overflow-hidden pt-20 md:pt-0">
+    <section className="min-h-screen bg-black flex items-center justify-center relative overflow-hidden pt-32 md:pt-32">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
       
