@@ -81,14 +81,14 @@ const Solutions = () => {
               <Phone className="text-blue-400" size={32} />
               <div className="text-left">
                 <h4 className="text-white font-semibold text-lg">IA Vocale 24/7</h4>
-                <p className="text-gray-300">Qualification automatique par téléphone</p>
+                <p className="text-gray-300">Qualifiez automatiquement vos prospects par téléphone, même en dehors des heures de bureau.</p>
               </div>
             </div>
             <div className="flex items-center space-x-4 bg-gray-800/50 p-6 rounded-lg border border-gray-700/50">
               <MessageSquare className="text-green-400" size={32} />
               <div className="text-left">
                 <h4 className="text-white font-semibold text-lg">Chatbot SMS</h4>
-                <p className="text-gray-300">Suivi intelligent des prospects</p>
+                <p className="text-gray-300">Relancez et nourrissez vos contacts avec des conversations personnalisées par SMS.</p>
               </div>
             </div>
           </div>

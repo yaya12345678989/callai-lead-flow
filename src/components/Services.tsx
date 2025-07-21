@@ -19,7 +19,7 @@ const Services = () => {
     {
       icon: Database,
       title: "CRM GoHighLevel",
-      description: "Plateforme centrale pour la gestion complète du pipeline de contacts avec workflows automatisés.",
+      description: "Notre plateforme centrale fournie pour la gestion complète du pipeline de contacts avec workflows automatisés.",
       features: ["Pipeline automatisé", "Notifications en temps réel", "Suivi des interactions"]
     }
   ];
@@ -85,7 +85,7 @@ const Services = () => {
 
         {/* Benefits */}
         <div className="text-center mb-12">
-          <h3 className="text-3xl font-bold text-white mb-8">Pourquoi vos concurrents choisissent CallAI ?</h3>
+          <h3 className="text-3xl font-bold text-white mb-8">Pourquoi les agences leaders choisissent CallAI ?</h3>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8">

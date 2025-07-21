@@ -20,7 +20,7 @@ const About = () => {
     },
     {
       icon: Target,
-      title: "Expertise Métier",
+      title: "Expertise Immobilière et Technologique.",
       description: "Combiner la connaissance approfondie du marché immobilier avec la maîtrise technologique."
     }
   ];
@@ -46,9 +46,7 @@ const About = () => {
               <h3 className="text-2xl font-bold text-white">Notre Mission</h3>
             </div>
             <p className="text-gray-200 text-lg leading-relaxed">
-              Révolutionner l'expérience immobilière en combinant l'expertise humaine avec 
-              la puissance de l'intelligence artificielle pour offrir un service de qualification 
-              de contacts et de gestion client inégalé, rapide et personnalisé.
+              Notre mission : Révolutionner l'immobilier en qualifiant vos contacts avec l'IA, pour un service client rapide, personnalisé et inégalé.
             </p>
           </div>
 
