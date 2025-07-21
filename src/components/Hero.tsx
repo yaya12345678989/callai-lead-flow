@@ -151,17 +151,15 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Main heading */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-            Libérez vos agents
-            <br />
+            Stop au temps perdu :<br />
             <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              avec l'IA qui qualifie
+              L'IA qualifie vos leads immobiliers, vos agents vendent.
             </span>
           </h1>
 
           {/* Subheading */}
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Transformez chaque contact entrant en opportunité qualifiée grâce à votre IA d'appel 
-            personnalisable et nos chatbots intelligents, intégrés dans votre CRM.
+            Transformez chaque lead en opportunité de vente qualifiée. Notre IA vocale personnalisable et nos chatbots s’intègrent à votre CRM pour des résultats immédiats.
           </p>
 
           {/* Quick CTA for impatient users - Centré */}
@@ -171,7 +169,7 @@ const Hero = () => {
               size="lg" 
               className="bg-white text-black hover:bg-gray-200 transition-all duration-300 font-semibold"
             >
-              Recevez un Appel de Notre IA !
+              Découvrez votre IA CallAI en action
               <Phone className="ml-2" size={20} />
             </Button>
             <p className="text-gray-400 text-sm mt-2">
@@ -207,7 +205,7 @@ const Hero = () => {
             </div>
             <div className="text-center col-span-2 md:col-span-1">
               <div className="text-3xl font-bold text-white mb-2">Plus</div>
-              <div className="text-gray-400">Temps pour vendre</div>
+              <div className="text-gray-400">de temps pour la vente</div>
             </div>
           </div>
         </div>
