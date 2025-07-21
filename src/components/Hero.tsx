@@ -151,15 +151,12 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Main heading */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-            Stop au temps perdu :<br />
-            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              L'IA qualifie vos leads immobiliers, vos agents vendent.
-            </span>
+            Vendez plus. <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Qualifiez moins.</span>
           </h1>
 
           {/* Subheading */}
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Transformez chaque lead en opportunité de vente qualifiée. Notre IA vocale personnalisable et nos chatbots s’intègrent à votre CRM pour des résultats immédiats.
+            L'IA CallAI transforme vos contacts en opportunités qualifiées, 24/7.
           </p>
 
           {/* Quick CTA for impatient users - Centré */}
@@ -177,6 +174,22 @@ const Hero = () => {
             </p>
           </div>
 
+          {/* Stats - Remontés et stylés */}
+          <div className="flex flex-wrap justify-center gap-8 mb-10">
+            <div className="bg-black/70 rounded-xl px-6 py-4 shadow-lg flex flex-col items-center min-w-[160px]">
+              <div className="text-3xl font-bold text-white mb-1">Contacts</div>
+              <div className="text-gray-300 text-base">Qualifiés automatiquement</div>
+            </div>
+            <div className="bg-black/70 rounded-xl px-6 py-4 shadow-lg flex flex-col items-center min-w-[160px]">
+              <div className="text-3xl font-bold text-white mb-1">24/7</div>
+              <div className="text-gray-300 text-base">Disponibilité</div>
+            </div>
+            <div className="bg-black/70 rounded-xl px-6 py-4 shadow-lg flex flex-col items-center min-w-[160px]">
+              <div className="text-3xl font-bold text-white mb-1">Plus</div>
+              <div className="text-gray-300 text-base">de temps pour la vente</div>
+            </div>
+          </div>
+
           {/* Key benefits - Centré */}
           <div className="flex flex-wrap justify-center gap-6 mb-10">
             <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
@@ -190,22 +203,6 @@ const Hero = () => {
             <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
               <Settings size={20} className="text-white" />
               <span className="text-white">Qualification</span>
-            </div>
-          </div>
-
-          {/* Stats - Centré */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-white mb-2">Contacts</div>
-              <div className="text-gray-400">Qualifiés automatiquement</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-white mb-2">24/7</div>
-              <div className="text-gray-400">Disponibilité</div>
-            </div>
-            <div className="text-center col-span-2 md:col-span-1">
-              <div className="text-3xl font-bold text-white mb-2">Plus</div>
-              <div className="text-gray-400">de temps pour la vente</div>
             </div>
           </div>
         </div>
