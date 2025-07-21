@@ -176,15 +176,15 @@ const Hero = () => {
 
           {/* Stats - Remontés et stylés */}
           <div className="flex flex-wrap justify-center gap-8 mb-10">
-            <div className="bg-black/70 rounded-xl px-6 py-4 shadow-lg flex flex-col items-center min-w-[160px]">
+            <div className="px-6 py-4 flex flex-col items-center min-w-[160px]">
               <div className="text-3xl font-bold text-white mb-1">Contacts</div>
               <div className="text-gray-300 text-base">Qualifiés automatiquement</div>
             </div>
-            <div className="bg-black/70 rounded-xl px-6 py-4 shadow-lg flex flex-col items-center min-w-[160px]">
+            <div className="px-6 py-4 flex flex-col items-center min-w-[160px]">
               <div className="text-3xl font-bold text-white mb-1">24/7</div>
               <div className="text-gray-300 text-base">Disponibilité</div>
             </div>
-            <div className="bg-black/70 rounded-xl px-6 py-4 shadow-lg flex flex-col items-center min-w-[160px]">
+            <div className="px-6 py-4 flex flex-col items-center min-w-[160px]">
               <div className="text-3xl font-bold text-white mb-1">Plus</div>
               <div className="text-gray-300 text-base">de temps pour la vente</div>
             </div>
