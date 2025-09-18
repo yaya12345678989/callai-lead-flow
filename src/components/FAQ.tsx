@@ -3,52 +3,73 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const FAQ = () => {
   const faqs = [
     {
-      question: "Comment l'IA qualifie-t-elle les prospects ?",
-      answer: "Notre IA utilise un script personnalisé pour votre agence, posant les bonnes questions sur le budget, l'échéance, la motivation et les besoins spécifiques. Elle analyse les réponses en temps réel pour déterminer la qualité du prospect."
+      question: "L'IA s'intègre-t-elle avec notre CRM existant ?",
+      answer: "Oui, seamless. Notre système s'intègre parfaitement avec les principaux CRM immobiliers (Efficity, Hektor, etc.) et peut également fonctionner avec des outils généralistes comme HubSpot ou Salesforce."
     },
     {
-      question: "Combien de temps faut-il pour voir les premiers résultats ?",
-      answer: "Les premières campagnes sont lancées sous 48h. Vous commencez à recevoir des prospects qualifiés dès la première semaine, avec une montée en puissance complète sous 30 jours."
+      question: "L'IA sonne-t-elle humaine au téléphone ?",
+      answer: "Oui, absolument naturelle. Notre technologie vocale avancée utilise des voix françaises natives et des conversations fluides. Vos prospects ne font pas la différence avec un agent humain."
     },
     {
-      question: "L'IA peut-elle s'adapter à notre façon de travailler ?",
-      answer: "Absolument. L'IA est entièrement personnalisable selon vos critères de qualification, votre vocabulaire et vos processus internes. Elle s'intègre parfaitement à vos outils existants."
+      question: "Peut-on faire confiance à l'IA pour la qualification ?",
+      answer: "Testée et fiable. Notre IA est formée spécifiquement sur les critères de qualification immobilière : budget, échéance, motivation, situation géographique. Elle est plus constante qu'un humain et ne fait jamais d'erreur de fatigue."
     },
     {
-      question: "Que se passe-t-il si nous n'obtenons pas 10 RDV en 3 mois ?",
-      answer: "Nous vous remboursons intégralement. Notre garantie est sans condition - si vous n'obtenez pas les résultats promis, vous récupérez votre investissement."
+      question: "Combien de temps pour développer et mettre en place ?",
+      answer: "1-2 semaines maximum. Nous configurons les campagnes, formons l'IA sur votre persona, intégrons votre agenda et testons le système. Vous commencez à recevoir des prospects qualifiés dès la 3ème semaine."
+    },
+    {
+      question: "Quel support si on a des questions ou problèmes ?",
+      answer: "Support 24/7 inclus. Équipe dédiée disponible par téléphone, email et chat. Nous suivons vos résultats de près et optimisons constamment pour maximiser votre ROI."
+    },
+    {
+      question: "Que se passe-t-il si ça ne marche pas pour nous ?",
+      answer: "Garantie remboursement total. Si vous n'obtenez pas 10 RDV qualifiés en 3 mois, nous vous remboursons intégralement ET offrons 3 mois supplémentaires gratuits. Aucune excuse, aucune condition cachée."
     }
   ];
 
   return (
-    <section id="faq" className="py-20 bg-gradient-to-b from-muted/30 to-background">
+    <section id="faq" className="py-20 bg-gradient-to-b from-background to-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Questions Fréquentes
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Tout ce que vous devez savoir sur notre solution IA pour votre agence immobilière.
+            Tout ce que les directeurs d'agences immobilières parisiennes veulent savoir 
+            avant de transformer leur prospection avec l'IA.
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="bg-card/50 backdrop-blur-sm rounded-lg border border-border/50 px-6"
+                className="bg-card/50 backdrop-blur-sm rounded-lg border border-border/50 px-6 shadow-soft hover:shadow-medium transition-all duration-300"
               >
-                <AccordionTrigger className="text-left text-lg font-semibold text-foreground hover:no-underline">
+                <AccordionTrigger className="text-left text-lg font-semibold text-foreground hover:no-underline py-6">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-6">
+                <AccordionContent className="text-muted-foreground pb-6 text-base leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
+        </div>
+
+        {/* CTA after FAQ */}
+        <div className="text-center mt-12">
+          <p className="text-lg text-muted-foreground mb-6">
+            D'autres questions ? Parlons-en directement lors de votre démo gratuite.
+          </p>
+          <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-6 py-3">
+            <span className="text-primary font-semibold">
+              Réponses personnalisées à votre situation d'agence
+            </span>
+          </div>
         </div>
       </div>
     </section>
