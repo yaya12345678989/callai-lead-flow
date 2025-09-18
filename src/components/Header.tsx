@@ -1,96 +1,49 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+
 import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-    setIsMenuOpen(false);
-  };
-
+  
   return (
-    <header className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border/50 z-50">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-lg border-b border-white/10">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center">
-            <span className="text-2xl font-bold gradient-primary bg-clip-text text-transparent">
-              CallAI
-            </span>
+          <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1">
+              <div className="w-2 h-8 bg-white rounded-full"></div>
+              <div className="w-2 h-12 bg-white rounded-full"></div>
+              <div className="w-2 h-8 bg-white rounded-full"></div>
+            </div>
+            <span className="text-white text-xl font-bold">CallAI</span>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection('solutions')}
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Solutions
-            </button>
-            <button 
-              onClick={() => scrollToSection('how-it-works')}
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              How it Works
-            </button>
-            <button 
-              onClick={() => scrollToSection('cta')}
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Contact
-            </button>
+          {/* Desktop Navigation - Centré */}
+          <nav className="hidden md:flex items-center justify-center flex-1">
+            <div className="flex items-center space-x-8">
+              <a href="#services" className="text-white/80 hover:text-white transition-colors">Services</a>
+              <a href="#solutions" className="text-white/80 hover:text-white transition-colors">Solutions</a>
+              <a href="#about" className="text-white/80 hover:text-white transition-colors">À propos</a>
+              <a href="#contact" className="text-white/80 hover:text-white transition-colors">Contact</a>
+            </div>
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex">
-            <Button 
-              onClick={() => scrollToSection('cta')}
-              className="gradient-primary text-white hover:opacity-90 transition-all duration-300"
-            >
-              Réserver Démo
-            </Button>
-          </div>
-
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
+          <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-background/95 backdrop-blur-sm border-t border-border/50">
-            <div className="px-4 py-4 space-y-4">
-              <button 
-                onClick={() => scrollToSection('solutions')}
-                className="block w-full text-left text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Solutions
-              </button>
-              <button 
-                onClick={() => scrollToSection('how-it-works')}
-                className="block w-full text-left text-muted-foreground hover:text-foreground transition-colors"
-              >
-                How it Works
-              </button>
-              <button 
-                onClick={() => scrollToSection('cta')}
-                className="block w-full text-left text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Contact
-              </button>
-              <Button 
-                onClick={() => scrollToSection('cta')}
-                className="w-full gradient-primary text-white hover:opacity-90 transition-all duration-300"
-              >
-                Réserver Démo
-              </Button>
-            </div>
+          <div className="md:hidden absolute top-16 left-0 right-0 bg-black/95 backdrop-blur-lg border-b border-white/10">
+            <nav className="flex flex-col p-4 space-y-4">
+              <a href="#services" className="text-white/80 hover:text-white transition-colors py-2">Services</a>
+              <a href="#solutions" className="text-white/80 hover:text-white transition-colors py-2">Solutions</a>
+              <a href="#about" className="text-white/80 hover:text-white transition-colors py-2">À propos</a>
+              <a href="#contact" className="text-white/80 hover:text-white transition-colors py-2">Contact</a>
+            </nav>
           </div>
         )}
       </div>

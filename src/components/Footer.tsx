@@ -1,71 +1,66 @@
-import { Button } from "@/components/ui/button";
-import { Mail, Linkedin } from "lucide-react";
+
+import { Mail, Phone, Linkedin, Twitter } from "lucide-react";
 
 const Footer = () => {
-  const scrollToContact = () => {
-    document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <footer className="py-16 bg-gradient-to-b from-muted/30 to-background border-t border-border/50">
-      <div className="container mx-auto px-4">
-        {/* Final CTA Section */}
-        <div className="text-center mb-12">
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-            Prêt à remplir votre agenda avec des prospects qualifiés ?
-          </h3>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Rejoignez les agences immobilières parisiennes qui ont choisi l'IA 
-            pour dominer leur marché local.
-          </p>
-          <Button 
-            onClick={scrollToContact}
-            size="lg" 
-            className="gradient-primary text-white hover:opacity-90 transition-all duration-300 font-semibold"
-          >
-            Démarrer Maintenant
-          </Button>
-        </div>
-
-        {/* Divider */}
-        <div className="border-t border-border/50 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            {/* Logo and Copyright */}
-            <div className="flex flex-col items-center md:items-start">
-              <span className="text-2xl font-bold gradient-primary bg-clip-text text-transparent mb-2">
-                CallAI
-              </span>
-              <p className="text-muted-foreground text-center md:text-left">
-                2025 CallAI. Tous droits réservés.
-              </p>
+    <footer className="bg-black border-t border-white/10">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-4 gap-8">
+          {/* Logo and Description */}
+          <div className="md:col-span-2">
+            <div className="flex items-center space-x-2 mb-4">
+              <div className="flex items-center space-x-1">
+                <div className="w-2 h-8 bg-white rounded-full"></div>
+                <div className="w-2 h-12 bg-white rounded-full"></div>
+                <div className="w-2 h-8 bg-white rounded-full"></div>
+              </div>
+              <span className="text-white text-xl font-bold">CallAI</span>
             </div>
+            <p className="text-gray-400 mb-6 max-w-md">
+              Libérez vos agents avec l'IA qui qualifie : votre assistant IA d'appel personnalisable 
+              transforme chaque contact en opportunité qualifiée.
+            </p>
+             {/*<div className="flex space-x-4">
+              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                <Linkedin size={20} className="text-white" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                <Twitter size={20} className="text-white" />
+              </a> 
+    
+          </div>*/}
+          </div>
 
-            {/* Contact Information */}
-            <div className="flex items-center gap-6">
-              <a 
-                href="mailto:contact@callai.fr" 
-                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Mail size={20} />
-                <span>contact@callai.fr</span>
-              </a>
-              <a 
-                href="https://linkedin.com/company/callai" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Linkedin size={20} />
-                <span>LinkedIn</span>
-              </a>
-            </div>
+          {/* Services */}
+          <div>
+            <h3 className="text-white font-semibold mb-4">Services</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">IA Vocale Personnalisable</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Chatbots SMS Intelligents</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Intégration CRM</a></li>
+             {/*  <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Formation Agents</a></li>*/}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="text-white font-semibold mb-4">Contact</h3>
+            <ul className="space-y-2">
+              <li className="flex items-center space-x-2 text-gray-400">
+                <Mail size={16} />
+                <span>contact@callai.digital</span>
+              </li>
+              {/* <li className="flex items-center space-x-2 text-gray-400">
+                <Phone size={16} />
+                <span>+33 1 XX XX XX XX</span>
+              </li> */}
+            </ul>
           </div>
         </div>
 
-        {/* Bottom tagline */}
-        <div className="text-center mt-8 pt-8 border-t border-border/50">
-          <p className="text-sm text-muted-foreground">
-            L'agence IA qui remplit les agendas immo à Paris avec prospects qualifiés sans effort
+        <div className="border-t border-white/10 mt-8 pt-8 flex justify-center items-center">
+          <p className="text-gray-400 text-sm text-center">
+            © 2025 CallAI. Tous droits réservés.
           </p>
         </div>
       </div>
